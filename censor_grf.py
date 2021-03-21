@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 
-MODE = "EOS"
+MODE = "BTC"
 
 
 if MODE == "EOS":
@@ -34,7 +34,7 @@ if MODE == "EOS":
     plt.show()
 
 elif MODE == "BTC":
-    total_node_num = 1340000
+    total_node_num = 9754
 
 
     y = [0.2, 0.5, 1.0, 1.0, 1.0, 1.5, 1.5, 3.4, 4.9, 6.8, 8.3, 9.0, 10.0, 10.3, 10.5, 13.7, 15.4]
@@ -42,7 +42,7 @@ elif MODE == "BTC":
     for i in y:
         temp += i
     y.insert(0, 100 - temp)
-
+    print(y)
     res_node_num = total_node_num - len(y)
     x = [res_node_num / total_node_num]
     for _ in range(len(y)-1):
@@ -55,10 +55,10 @@ elif MODE == "BTC":
         each = each / 100
         current = each + past
         area += (past + current) * x[iter] / 2
+        past = current
         iter += 1
 
     result = 1 - 2 * (1/2 - area)
-
     x.insert(0, 0)
     y.insert(0, 0)
 
@@ -67,7 +67,7 @@ elif MODE == "BTC":
     for i in y:
         sum += i
         new_y.append(sum/100)
-
+    print(len(x))
     new_x = []
     sum2 = 0
     for i in x:
@@ -83,7 +83,7 @@ elif MODE == "BTC":
 
 
 elif MODE == "ETH":
-    total_node_num = 670000
+    total_node_num = 11034
 
     y = [1, 1, 1, 1, 2, 3, 3, 4, 4, 4, 8, 10, 10, 13, 13, 21]
     temp = 0

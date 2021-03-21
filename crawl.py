@@ -1,5 +1,5 @@
 import pickle
-from selenium import webdriver
+# from selenium import webdriver
 
 ACT = "READ"
 
@@ -32,3 +32,28 @@ if ACT == "WRITE":
 if ACT == "READ":
     with open('eth_node.pickle', 'rb') as f:
         data = pickle.load(f)
+
+        from math import log, sqrt
+
+        cNum = 195
+        cList = [0] * cNum
+        # BTC
+        mu = 9754 / cNum
+        cList[0] = 9754
+        sigma = 0
+        for i in cList:
+            sigma += (i - mu) ** 2 / cNum
+        sigma = sqrt(sigma)
+        print(sigma)
+
+        # ETH
+        mu = 11034 / cNum
+        cList[0] = 11034
+        sigma = 0
+        for i in cList:
+            sigma += (i - mu) ** 2 / cNum
+        sigma = sqrt(sigma)
+        print(sigma)
+
+
+

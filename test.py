@@ -1,14 +1,15 @@
-import plotly.graph_objects as go
-from plotly.validators.scatter.marker import SymbolValidator
+import matplotlib.pyplot as plt
+import geopandas
 
-raw_symbols = SymbolValidator().values
-namestems = []
-namevariants = []
-symbols = []
+filename = 'custom.geo.json'
+with open(filename) as f:
+    df = geopandas.read_file(f)
+    print(df.head())
+    df = df.rename(columns={'geometry': 'borders'})
+    print(df.shape)
+    df.insert(1, "test", "default")
+    df['test'][1] = "change"
+    print(df.head())
 
-for i in range(0,len(raw_symbols),3):
-
-    name = raw_symbols[i+2]
-    symbols.append(raw_symbols[i])
-    namestems.append(name.replace("-open", "").replace("-dot", ""))
-    namevariants.append(name[len(namestems[-1]):])
+    # df.plot()
+    # plt.show()
